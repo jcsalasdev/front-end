@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/fbadad80a0.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="main.js" defer></script>
+    <script type="module" src="todo.js"></script>
+    <title>Momentum</title>
+  </head>
+  <body class="bg">
+    <section class="greetings">
+      <p class="greetings_content">
+        <span class="greetings_text"></span>,
+        <span class="greetings_name" contenteditable spellcheck="false"></span>
+        !
+      </p>
+      <p class="greetings_date"></p>
+    </section>
+
+    <section class="time"></section>
+
+    <section class="todo">
+      <div class="add-to-do">
+        <input
+          type="text"
+          class="todo_add"
+          id="input"
+          placeholder="What are your activities today?"
+        />
+      </div>
+
+      <div class="content">
+        <ul id="list"></ul>
+      </div>
+    </section>
+
+    <section class="quotation">
+      <p class="quotation_text" contenteditable spellcheck="false"></p>
+      <p class="quotation_author" contenteditable spellcheck="false"></p>
+    </section>
+  </body>
+</html>

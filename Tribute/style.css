@@ -1,0 +1,364 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	font-size: 62.5%;
+
+	--color-primary: #800404;
+	--color-primary-m-light: #80040442;
+	--color-primary-m-dark: #800404ad;
+
+	--color-secondary: #e6b112;
+
+	--color-tertiary: #f06a45;
+}
+
+body {
+	font-family: "Times New Roman", Times, serif;
+	line-height: 1.5;
+}
+
+.body {
+	display: grid;
+	grid-template-columns:
+		[container-start]
+		1fr[center-start] repeat(
+			5,
+			[col-start] minmax(min-content, 22rem) [col-end]
+		)
+		[center-end]
+		1fr[container-end];
+
+	grid-template-rows: 100vh repeat(4, min-content);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+}
+
+p {
+	color: white;
+	font-size: calc(1rem + 1vw);
+	font-weight: 200;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+nav#header_main-nav {
+	grid-column: container-start / container-end;
+	width: 100%;
+	background-color: var(--color-primary-m-dark);
+	position: fixed;
+	z-index: 5;
+}
+
+ul.header_main-nav--links {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+ul.header_main-nav--links li {
+	padding: 1vh;
+}
+
+ul.header_main-nav--links li a {
+	position: relative;
+	padding: 0.2rem 0.6rem;
+	font-weight: bold;
+	font-size: calc(1rem + 1vw);
+	color: white;
+}
+
+ul.header_main-nav--links li a:link::before,
+ul.header_main-nav--links li a:visited::before,
+ul.header_main-nav--links li a:link::after,
+ul.header_main-nav--links li a:visited::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 0.25rem;
+	background-color: white;
+
+	transform: scaleX(0);
+	transition: transform 0.6s cubic-bezier(1, 0, 0, 1);
+}
+
+ul.header_main-nav--links li a:link::before,
+ul.header_main-nav--links li a:visited::before {
+	top: 0;
+	transform-origin: left;
+}
+
+ul.header_main-nav--links li a:link::after,
+ul.header_main-nav--links li a:visited::after {
+	bottom: 0;
+	transform-origin: right;
+}
+
+ul.header_main-nav--links li a:hover::before,
+ul.header_main-nav--links li a:active::before,
+ul.header_main-nav--links li a:hover::after,
+ul.header_main-nav--links li a:active::after {
+	transform: scaleX(1);
+}
+
+header#title {
+	grid-column: container-start / container-end;
+	background-image: linear-gradient(
+			var(--color-primary-m-light),
+			var(--color-primary-m-light)
+		),
+		url(img/StanLee.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.title_content {
+	display: grid;
+	grid-template-rows: 1fr repeat(2, 1fr) 1fr;
+	justify-items: center;
+	height: 90%;
+}
+
+.title_content-header {
+	grid-row: 2 / 3;
+	font-size: calc(4rem + 4vw);
+	font-weight: 400;
+	color: white;
+	text-shadow: 2px 2px black;
+	text-transform: uppercase;
+	padding: 2rem 2rem 0 2rem;
+	align-self: end;
+}
+
+.title_content-para {
+	grid-row: 3 / 4;
+	font-size: calc(1rem + 2vw);
+	font-weight: 500;
+	padding: 0 2rem 2rem 2rem;
+	color: var(--color-tertiary);
+	text-shadow: 2px 2px black;
+}
+
+main#main {
+	background-color: var(--color-secondary);
+	grid-column: container-start / container-end;
+}
+
+.main_content {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr) 1fr;
+}
+
+div#img-div {
+	background-color: var(--color-tertiary);
+	border-right: 5px solid black;
+	padding: 0 0 2rem 0;
+}
+
+div#img-div > img {
+	object-fit: cover;
+	width: 100%;
+	height: 90%;
+}
+
+p#id-caption {
+	font-size: calc(1rem + 1vw);
+	color: black;
+	font-weight: bold;
+	padding: 0.7rem;
+	text-align: center;
+}
+
+div#tribute-info {
+	grid-column: 2 / 4;
+
+	width: 100%;
+	padding: 2rem;
+	place-items: center;
+}
+
+.tribute-info_bio--title {
+	font-size: calc(2rem + 2vw);
+	padding: 0 2rem 1rem;
+	font-weight: bold;
+	color: black;
+	text-shadow: 2px 2px white;
+	text-transform: uppercase;
+	margin-bottom: 2rem;
+}
+
+.tribute-info_bio--para {
+	font-size: calc(1rem + 0.6667vw);
+	padding: 0 2rem 1rem;
+	text-align: justify;
+}
+
+.tribute-info_bio--para a {
+	color: black;
+	font-size: calc(0.75rem + 0.5vw);
+}
+
+span#more {
+	display: none;
+}
+
+section#comics {
+	grid-column: center-start / center-end;
+	padding: 4vw 0;
+	background-color: black;
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 35rem);
+	grid-template-rows: min-content;
+	grid-gap: 5rem;
+	place-content: center;
+	place-items: center;
+}
+
+.comics_card {
+	width: 28rem;
+	height: 45rem;
+	position: relative;
+}
+
+.comics_card-title {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	transform: scale(1);
+	transition: transform 0.7s ease-in-out;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	display: grid;
+	justify-items: center;
+	align-items: flex-start;
+	padding: 3rem;
+}
+
+.comics_card-title:hover,
+.comics_card-title:active {
+	transform: scale(1.1);
+}
+
+.comics_card-title h2 {
+	justify-content: center;
+	align-self: end;
+	font-weight: bold;
+	font-size: calc(2rem + 1vw);
+	color: white;
+	text-transform: uppercase;
+	text-shadow: 2px 1px var(--color-tertiary);
+}
+
+.comics_card-title:last-child h2 {
+	font-size: calc(1rem + 0.75vw);
+}
+
+.comics_card:first-child .comics_card-title {
+	background-image: url(img/comics/comics-1.jpg);
+}
+
+.comics_card:nth-child(2) .comics_card-title {
+	background-image: url(img/comics/comics-2.jpg);
+}
+
+.comics_card:nth-child(3) .comics_card-title {
+	background-image: url(img/comics/comics-3.jpg);
+}
+
+.comics_card:nth-child(4) .comics_card-title {
+	background-image: url(img/comics/comics-4.jpg);
+}
+
+.comics_card:nth-child(5) .comics_card-title {
+	background-image: url(img/comics/comics-5.jpg);
+}
+
+.comics_card:last-child .comics_card-title {
+	background-image: url(img/comics/comics-6.jpg);
+}
+
+.footer {
+	background-color: var(--color-primary);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 7vh;
+}
+
+a#tribute-link {
+	font-size: calc(1rem + 0.8vw);
+	font-weight: bold;
+	color: var(--color-secondary);
+	background-color: black;
+	padding: 0.3rem;
+	border: 2px solid var(--color-secondary);
+	border-radius: 1rem;
+}
+
+a#tribute-link:hover,
+a#tribute-link:active {
+	color: red;
+}
+
+@media screen and (max-width: 600px) {
+	ul.header_main-nav--links li {
+		padding: 1.5vh;
+	}
+
+	.comics_card:first-of-type h2 {
+		font-size: calc(2rem + 1vw);
+	}
+
+	.comics_card:nth-child(2) h2 {
+		font-size: calc(2rem + 1vw);
+	}
+
+	.comics_card:nth-child(3) h2 {
+		font-size: calc(1.5rem + 1vw);
+	}
+
+	.comics_card:nth-child(4) h2 {
+		font-size: calc(2rem + 1vw);
+	}
+
+	.comics_card:nth-child(5) h2 {
+		font-size: calc(2rem + 1vw);
+	}
+
+	.comics_card:last-child h2 {
+		font-size: calc(1.5rem + 1vw);
+	}
+}
+
+@media screen and (max-width: 400px) {
+	div#img-div {
+		display: none;
+	}
+
+	div#tribute-info {
+		grid-column: 1 / 4;
+	}
+
+	ul.header_main-nav--links {
+		justify-content: center;
+	}
+}
